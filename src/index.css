@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Press+Start+2P&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dnk-surface font-body;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors duration-150;
+  }
+
+  .btn-primary {
+    @apply bg-dnk-accent hover:bg-dnk-accent/80 text-white;
+  }
+
+  .btn-secondary {
+    @apply bg-dnk-glow/20 hover:bg-dnk-glow/30 text-dnk-glow;
+  }
+
+  .input {
+    @apply w-full px-4 py-2 rounded-lg bg-dnk-surface border border-dnk-secondary text-text-light placeholder-text-muted focus:border-dnk-glow focus:outline-none;
+  }
+}
+
+/* Custom Animations */
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 5px #00FFD0, 0 0 10px #00FFD0;
+  }
+  50% {
+    text-shadow: 0 0 10px #00FFD0, 0 0 20px #00FFD0;
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dnk-secondary/20;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-dnk-glow/30 rounded-full hover:bg-dnk-glow/50 transition-colors duration-150;
+}
+
+/* Custom Select Dropdown Styling */
+.custom-select {
+  color-scheme: dark;
+}
+
+.custom-select option {
+  background-color: #1A1A1A;
+  color: #FFFFFF;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.custom-select option:hover,
+.custom-select option:focus {
+  background-color: #3dbb5a;
+  color: #1A1A1A;
+}
+
+.custom-select option:checked {
+  background-color: #56dd76;
+  color: #1A1A1A;
+  font-weight: 600;
+}
+
+/* Firefox specific styling */
+@-moz-document url-prefix() {
+  .custom-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2356dd76' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+  }
+  
+  .custom-select option {
+    background-color: #1A1A1A !important;
+    color: #FFFFFF !important;
+  }
+}
+
+/* WebKit specific styling */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .custom-select::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .custom-select::-webkit-scrollbar-track {
+    background: #2B2B2B;
+    border-radius: 4px;
+  }
+  
+  .custom-select::-webkit-scrollbar-thumb {
+    background: #56dd76;
+    border-radius: 4px;
+  }
+  
+  .custom-select::-webkit-scrollbar-thumb:hover {
+    background: #45b15f;
+  }
+}
+
+/* Mobile-specific utilities */
+@layer utilities {
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Touch-friendly spacing for mobile */
+  @media (max-width: 640px) {
+    .touch-spacing {
+      padding: 1rem;
+    }
+  }
+}
