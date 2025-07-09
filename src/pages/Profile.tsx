@@ -14,7 +14,7 @@ export function Profile() {
     const fetchSocials = async () => {
       if (!currentUser?.wallet) return;
       try {
-        const res = await fetch(`http://localhost:3001/api/user/${currentUser.wallet}/socials`);
+        const res = await fetch(`http://dnkquest-backend.vercel.app/api/user/${currentUser.wallet}/socials`);
         const data = await res.json();
         setSocialAccounts({
           twitter: data.accounts?.twitter || '',
@@ -50,7 +50,7 @@ export function Profile() {
     if (!currentUser) return;
 
     try {
-      const res = await fetch(`http://localhost:3001/api/user/${currentUser.wallet}/socials`, {
+      const res = await fetch(`http://dnkquest-backend.vercel.app/api/user/${currentUser.wallet}/socials`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ accounts: socialAccounts }),
