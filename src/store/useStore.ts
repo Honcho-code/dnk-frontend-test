@@ -51,7 +51,7 @@ interface AppState {
   updateSocialAccounts: (wallet: string, accounts: SocialAccounts) => Promise<void>;
 }
 
-const API_BASE = 'http://dnkquest-backend.vercel.app/api';
+const API_BASE = 'https://dnkquest-backend.vercel.app/api';
 
 async function fetchUser(wallet: string): Promise<User | null> {
   try {
